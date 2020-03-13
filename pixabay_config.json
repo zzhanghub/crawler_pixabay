@@ -1,0 +1,7 @@
+{
+    "keywords_file": "./keywords_tmp.json",
+    "save_root": "../Candidate",
+    "pixabay_api_key": "Your Key",
+    "url_keys": "webformatURL",
+    "npage":2
+}
