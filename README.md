@@ -34,7 +34,7 @@ Here we release an easy-to-use crawler. Users can specify image category, resolu
   * `previewURL`: Low resolution images with a maximum width or height of 150 px;
   * `webformatURL`: Medium sized image with a maximum width or height of 640 px;
   * `largeImageURL`:Scaled image with a maximum width/height of 1280px;
-* `npage`: The larger the value, the larger the search range.
+* `npage`: The larger the value, the larger the search scope.
 ```json
 {
     "keywords_file": "./keywords.json",
@@ -44,3 +44,19 @@ Here we release an easy-to-use crawler. Users can specify image category, resolu
     "npage":2
 }
 ```
+
+### 2.Configure `keywords.json`
+The form is as 
+`"Class name"` : `"Search keyword"`
+```json
+{
+    "camera" : "camera",
+    "earphone" : "AirPods"
+}
+```
+
+### 3. Run by
+```shell
+python pixabay_crawler.py
+```
+
