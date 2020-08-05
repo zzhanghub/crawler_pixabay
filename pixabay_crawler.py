@@ -1,6 +1,5 @@
 import json
 import pixabay
-import urllib
 import os
 import requests
 import time
@@ -24,14 +23,13 @@ for ikeyword in keywords:
     os.makedirs(im_dir, exist_ok=True)
     os.makedirs(lic_dir, exist_ok=True)
 
-    for ipage in range(1, config['npage']+1):
+    for ipage in range(1, config['npage'] + 1):
         # Searching
         try:
             ipb_json = pb.search(q=keywords_tag_dic[ikeyword],
-                        image_type='photo',
-                        per_page=200,
-                        page=ipage
-                        )
+                                 image_type='photo',
+                                 per_page=200,
+                                 page=ipage)
         except Exception as e:
             print('Walking Error')
             continue
@@ -45,12 +43,13 @@ for ikeyword in keywords:
                 if url != None:
                     break
 
-            if(str(url) != "None"):
+            if (str(url) != "None"):
                 print(url)
                 try:
                     response = requests.get(url)
-                    ipath = os.path.join(
-                        im_dir, (str(photo.get('id')) + "." + os.path.basename(url).split(".")[1]))
+                    ipath = os.path.join(im_dir,
+                                         (str(photo.get('id')) + "." +
+                                          os.path.basename(url).split(".")[1]))
                     with open(ipath, 'wb+') as f:
                         f.write(response.content)
 
@@ -61,15 +60,18 @@ for ikeyword in keywords:
                         'pageURL': photo.get('pageURL'),
                         'pixabay_url': url
                     }
-                    photo_json = json.dumps(
-                        photo_dic, ensure_ascii=False, indent=4)
+                    photo_json = json.dumps(photo_dic,
+                                            ensure_ascii=False,
+                                            indent=4)
 
-                    with open(os.path.join(lic_dir, (str(photo.get('id')) +'.json')), 'w') as f:
+                    with open(
+                            os.path.join(lic_dir,
+                                         (str(photo.get('id')) + '.json')),
+                            'w') as f:
                         f.write(photo_json)
-                    
+
                     time.sleep(3 * random.random())
 
                 except Exception as e:
                     print(str(e))
                     continue
-

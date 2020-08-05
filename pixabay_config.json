@@ -1,5 +1,5 @@
 {
-    "keywords_file": "./keywords_tmp.json",
+    "keywords_file": "./keywords.json",
     "save_root": "../Candidate",
     "pixabay_api_key": "Your Key",
     "url_keys": "webformatURL",
